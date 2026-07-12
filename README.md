@@ -6,9 +6,7 @@ This project was developed to demonstrate object-oriented software engineering c
 
 ## Screenshots
 
-| Login | Dashboard |
-|---|---|
-| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) |
+
 
 | Live Typing Test | Results |
 |---|---|
