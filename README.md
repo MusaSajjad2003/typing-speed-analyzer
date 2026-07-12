@@ -1,69 +1,59 @@
-#  TypeSpeed — Java Swing Typing Speed Test & Performance Analytics App
+# TypeSpeed — Java Swing Typing Speed Test & Performance Analytics App
 
-A desktop typing speed test application built in **Java (Swing)**, featuring real-time
-words-per-minute (WPM) tracking, live character-level accuracy feedback, a persistent
-global leaderboard, per-user history, and a role-based free/premium account system.
+A desktop typing speed test application built with Java Swing featuring real-time words-per-minute (WPM) tracking, live character-level accuracy feedback, a persistent global leaderboard, per-user history, and a role-based free/premium account system.
 
-Built as an individual object-oriented design project to apply core software engineering
-principles — inheritance, polymorphism, interfaces, generics, and the Observer pattern —
-in a real, working application rather than isolated exercises.
+This project was developed to demonstrate object-oriented software engineering concepts including inheritance, polymorphism, interfaces, generics, and the Observer design pattern in a practical desktop application.
 
-<!-- Add 1-2 screenshots or a short GIF of the app running here, e.g.: -->
-<!-- ![Typing Test Screenshot](docs/screenshot-typing-test.png) -->
+> *Add screenshots or a GIF here.*
 
----
+## Features
 
-## ✨ Features
+- Real-time WPM, accuracy, and mistake tracking with color-coded typing feedback
+- Easy, Medium, and Hard typing tests loaded from external text files
+- Secure user registration and login using SHA-256 password hashing
+- Free and Premium account tiers with feature-based access
+- Global leaderboard implemented using a generic `Leaderboard<T extends Result>` class
+- Personal typing history with sorting
+- Export typing history to a `.txt` file (Premium users)
+- Persistent storage using Java object serialization
 
-- **Live typing test** — real-time WPM, accuracy, and mistake tracking as you type, with
-  inline color-coded feedback (correct characters in blue, incorrect in red) rendered via
-  `JTextPane`/`StyledDocument`
-- **Difficulty levels** — Easy / Medium / Hard text pools loaded from external resource files
-- **Account system** — registration and login with **SHA-256 password hashing** (no
-  plaintext passwords stored or compared)
-- **Free vs. Premium tiers** — Premium users unlock difficulty selection and history export;
-  Free users get a streamlined default experience
-- **Global leaderboard** — top performers ranked by WPM, built on a generic,
-  type-safe `Leaderboard<T extends Result>` class
-- **Personal history** — per-user performance history with sorting
-- **Export to file** — Premium users can export their typing history to a `.txt` report
-- **Persistent storage** — user accounts and results persist across sessions via Java
-  object serialization
+## Object-Oriented Concepts
 
-## 🧠 Concepts demonstrated
-
-| Concept | Where |
-|---|---|
-| Abstraction & inheritance | `User` (abstract) → `FreeUser`, `PremiumUser` |
-| Interfaces / polymorphism | `TypingBehavior` interface implemented per user type |
+| Concept | Implementation |
+|----------|----------------|
+| Abstraction & Inheritance | `User` → `FreeUser`, `PremiumUser` |
+| Interfaces & Polymorphism | `TypingBehavior` |
 | Generics | `Leaderboard<T extends Result>` |
-| Observer / listener pattern | `TypingTestGUI.TypingTestListener` decouples the GUI from scoring logic |
-| Event-driven programming | Swing `KeyListener`, `ActionListener`, `Timer` for live stats |
-| File I/O & serialization | `ObjectInputStream`/`ObjectOutputStream` for persistence, `BufferedReader` for text pools |
-| Security basics | SHA-256 password hashing via `MessageDigest` |
+| Observer Pattern | `TypingTestGUI.TypingTestListener` |
+| Event-Driven Programming | Swing `KeyListener`, `ActionListener`, `Timer` |
+| File I/O & Serialization | `ObjectInputStream`, `ObjectOutputStream`, `BufferedReader` |
+| Security | SHA-256 password hashing (`MessageDigest`) |
 
-## 🛠️ Tech stack
+## Tech Stack
 
-- **Language:** Java (JDK 8+)
-- **UI:** Java Swing (`JFrame`, `JTextPane`, `StyledDocument`, `Timer`)
-- **Persistence:** Java Object Serialization (file-based)
-- **Design:** Object-Oriented Programming, Observer pattern, role-based access control
+- Java (JDK 8+)
+- Java Swing
+- Java Object Serialization
+- Object-Oriented Programming
+- Observer Design Pattern
 
-## 📂 Project structure
+## Project Structure
 
-```
+```text
 typing-speed-analyzer/
-├── src/com/typingapp/       # All source files (package com.typingapp)
-│   ├── TypingApp.java       # Entry point
-│   ├── LoginScreen.java     # Auth UI
-│   ├── DashboardScreen.java # Main menu
-│   ├── TypingTestGUI.java   # Live typing test UI
-│   ├── TypingTest.java      # Test orchestration logic
-│   ├── FeedbackAnalyzer.java# WPM / accuracy / mistake calculation
-│   ├── Leaderboard.java     # Generic leaderboard + persistence
-│   ├── User.java / FreeUser.java / PremiumUser.java
+├── src/com/typingapp/
+│   ├── TypingApp.java
+│   ├── LoginScreen.java
+│   ├── DashboardScreen.java
+│   ├── TypingTestGUI.java
+│   ├── TypingTest.java
+│   ├── FeedbackAnalyzer.java
+│   ├── Leaderboard.java
+│   ├── User.java
+│   ├── FreeUser.java
+│   ├── PremiumUser.java
 │   └── ...
-├── resources/                # Text pools for each difficulty
+├── resources/
 │   ├── easy.txt
 │   ├── medium.txt
 │   └── hard.txt
@@ -71,38 +61,41 @@ typing-speed-analyzer/
 └── README.md
 ```
 
-## 🚀 Getting started
+## Getting Started
 
-**Requirements:** JDK 8 or later
+### Requirements
+
+- JDK 8 or later
+
+### Clone the Repository
 
 ```bash
-# Clone the repo
-git clone https://github.com/<your-username>/typing-speed-analyzer.git
+git clone https://github.com/MusaSajjad2003/typing-speed-analyzer.git
 cd typing-speed-analyzer
+```
 
-# Compile
+### Compile
+
+```bash
 javac -d out $(find src -name "*.java")
+```
 
-# Run (from the project root, so it can find the resources/ folder)
+### Run
+
+```bash
 java -cp out com.typingapp.TypingApp
 ```
 
-On first run the app creates `users.dat` and `results.dat` in the working directory to
-persist accounts and scores.
+On the first run, the application creates `users.dat` and `results.dat` to store user accounts and typing results.
 
-## 🗺️ Known limitations & possible extensions
+## Future Improvements
 
-Being transparent about scope, since this was built as a learning project:
+- Replace file-based storage with SQLite or another database
+- Add JUnit test coverage
+- Implement password reset functionality
+- Add customizable typing duration and settings
+- Develop a web-based version
 
-- Data is stored via Java serialization in flat files rather than a database — fine for a
-  single-user desktop demo, not for concurrent/multi-user use
-- No password reset flow or input sanitization beyond basic empty-field checks
-- UI is desktop-only (Swing); a web version would need a full client-server rewrite,
-  not just a "frontend swap"
+## License
 
-Natural next steps if extended further: SQLite/JDBC-backed persistence, JUnit test
-coverage for `FeedbackAnalyzer`, and a settings screen for custom test duration.
-
-## 📄 License
-
-MIT — see [LICENSE](LICENSE).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
