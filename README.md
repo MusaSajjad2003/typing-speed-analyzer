@@ -4,7 +4,15 @@ A desktop typing speed test application built with Java Swing featuring real-tim
 
 This project was developed to demonstrate object-oriented software engineering concepts including inheritance, polymorphism, interfaces, generics, and the Observer design pattern in a practical desktop application.
 
-> *Add screenshots or a GIF here.*
+## Screenshots
+
+| Login | Dashboard |
+|---|---|
+| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) |
+
+| Live Typing Test | Results |
+|---|---|
+| ![Typing Test](screenshots/typing-test.png) | ![Results](screenshots/results.png) |
 
 ## Features
 
