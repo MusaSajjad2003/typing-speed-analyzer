@@ -1,4 +1,4 @@
-# ⌨️ TypeSpeed — Java Swing Typing Speed Test & Performance Analytics App
+#  TypeSpeed — Java Swing Typing Speed Test & Performance Analytics App
 
 A desktop typing speed test application built in **Java (Swing)**, featuring real-time
 words-per-minute (WPM) tracking, live character-level accuracy feedback, a persistent
